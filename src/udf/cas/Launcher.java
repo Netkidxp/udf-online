@@ -32,8 +32,21 @@ public class Launcher {
 	public void setArch(Arch arch) {
 		this.arch = arch;
 	}
+	/**
+	 * @return the parallelType
+	 */
+	public ParallelType getParallelType() {
+		return parallelType;
+	}
+	/**
+	 * @param parallelType the parallelType to set
+	 */
+	public void setParallelType(ParallelType parallelType) {
+		this.parallelType = parallelType;
+	}
 	private Arch arch;
 	private Dim dim;
 	private Parallel parallel;
 	private Precision precision;
+	private ParallelType parallelType;
 }

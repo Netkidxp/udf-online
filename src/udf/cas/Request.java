@@ -1,5 +1,7 @@
 package udf.cas;
 import java.util.List;
+
+import udf.common.CodeType;
 import udf.fluent.*;
 
 /**
@@ -50,5 +52,24 @@ public class Request {
 	}
 	public String getLibName() {
 		return libName;
+	}
+	public String getCodeListString(CodeType ct)
+	{
+		String cs ="";
+		for(Code c : codes)
+		{
+			if(c.getType() == ct)
+			{
+				cs += " " + c.getName();
+			}
+		}
+		return cs;
+	}
+	public void writeCodeToDir(String dir) 
+	{
+		for(Code c:codes)
+		{
+			c.write(dir);
+		}
 	}
 }

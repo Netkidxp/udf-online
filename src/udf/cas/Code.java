@@ -1,4 +1,8 @@
 package udf.cas;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import udf.common.*;
 public class Code {
 	private Code(CodeType type, String code, String name) {
@@ -31,6 +35,20 @@ public class Code {
 	public boolean write(String dir)
 	{
 		////////////////////////////////
+		File f = new File(dir + File.separator + name + type.toString());
+		if(!f.exists())
+			try {
+				f.createNewFile();
+				FileWriter fw=new FileWriter(f,false);
+				fw.write(code);
+				fw.flush();
+				fw.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
+		
 		return true;
 	}
 }
