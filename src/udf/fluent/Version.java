@@ -29,6 +29,9 @@ public class Version {
 		LibRelease = libRelease;
 		Release = release;
 	}
+	public Version() {
+		// TODO Auto-generated constructor stub
+	}
 	private String Ver;
 	private String LibRelease;
 	private String Release;

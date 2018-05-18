@@ -9,6 +9,7 @@ import java.nio.file.StandardCopyOption;
 import udf.cas.*;
 import udf.common.*;
 import udf.fluent.*;
+import udf.io.Directory;
 
 public class PreProcessor {
 	public PreProcessor(Request request) {
@@ -56,10 +57,15 @@ public class PreProcessor {
 	{
 		Request req =request;
 		String sep = File.separator;
-		String stBase = Config.currentConfig().getWorkplace()+sep+req.getGuid();
+		//String stBase = Config.currentConfig().getWorkplace()+sep+req.getGuid();
+		String stBase = Config.DefaultConfig().getWorkplace()+sep+req.getGuid();
 		String stLib = stBase + sep + req.getLibName();
 		String stSrc = stLib + sep + "src";
 		String stPla = stLib + sep + req.getLauncher().getArch().toString();
+		Directory.make(stBase);
+		Directory.make(stLib);
+		Directory.make(stSrc);
+		Directory.make(stPla);
 		req.writeCodeToDir(stSrc);
 		for(String pos:stPos)
 		{

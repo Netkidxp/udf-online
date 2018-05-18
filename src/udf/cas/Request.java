@@ -1,4 +1,5 @@
 package udf.cas;
+import java.io.IOException;
 import java.util.List;
 
 import udf.common.CodeType;
@@ -9,6 +10,12 @@ import udf.fluent.*;
  *
  */
 public class Request {
+	/**
+	 * @param version
+	 * @param launcher
+	 * @param codes
+	 * @param libname
+	 */
 	private Request(Version version, Launcher launcher, List<Code> codes, String libname) {
 		super();
 		this.guid = Guid();
@@ -16,6 +23,10 @@ public class Request {
 		this.launcher = launcher;
 		this.codes = codes;
 		this.libName = libname;
+	}
+	public Request() {
+		// TODO Auto-generated constructor stub
+		this.guid = Guid();
 	}
 	private String guid;//id
 	private Version version;//°æ±¾
@@ -65,7 +76,7 @@ public class Request {
 		}
 		return cs;
 	}
-	public void writeCodeToDir(String dir) 
+	public void writeCodeToDir(String dir) throws IOException 
 	{
 		for(Code c:codes)
 		{

@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import udf.common.*;
 public class Code {
-	private Code(CodeType type, String code, String name) {
+	public Code(CodeType type, String code, String name) {
 		super();
 		this.type = type;
 		this.code = code;
@@ -32,23 +32,16 @@ public class Code {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public boolean write(String dir)
+	public boolean write(String dir) throws IOException
 	{
 		////////////////////////////////
-		File f = new File(dir + File.separator + name + type.toString());
+		File f = new File(dir + File.separator + name + "." + type.toString());
 		if(!f.exists())
-			try {
-				f.createNewFile();
-				FileWriter fw=new FileWriter(f,false);
-				fw.write(code);
-				fw.flush();
-				fw.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return false;
-			}
-		
+			f.createNewFile();
+		FileWriter fw=new FileWriter(f,false);
+		fw.write(code);
+		fw.flush();
+		fw.close();
 		return true;
 	}
 }

@@ -26,6 +26,9 @@ public class Launcher {
 		this.parallel = parallel;
 		this.precision = precision;
 	}
+	public Launcher() {
+		// TODO Auto-generated constructor stub
+	}
 	public Arch getArch() {
 		return arch;
 	}

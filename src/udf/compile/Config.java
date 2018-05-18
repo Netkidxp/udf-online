@@ -34,4 +34,8 @@ public class Config implements Serializable{
 			return config;
 		}
 	}
+	public static Config DefaultConfig() {
+		Config c =new Config("e:\\udf_online_test");
+		return c;
+	}
 }
