@@ -30,10 +30,18 @@ public class PreProcessor {
 	{
 		Request req =request;
 		String sep = File.separator;
-		String stBase = Config.currentConfig().getWorkplace()+sep+req.getGuid();
+		String stWorkplace = DbConfig.defaultConfig().getWorkplace();
+		
+		String stBase = stWorkplace+sep+req.getGuid();
 		String stLib = stBase + sep + req.getLibName();
 		String stSrc = stLib + sep + "src";
 		String stPla = stLib + sep + req.getLauncher().getArch().toString();
+		if(!Directory.exists(stWorkplace))
+			Directory.make(stWorkplace);
+		Directory.make(stBase);
+		Directory.make(stLib);
+		Directory.make(stSrc);
+		Directory.make(stPla);
 		req.writeCodeToDir(stSrc);
 		Launcher l = req.getLauncher();
 		String pos ="";
@@ -58,10 +66,14 @@ public class PreProcessor {
 		Request req =request;
 		String sep = File.separator;
 		//String stBase = Config.currentConfig().getWorkplace()+sep+req.getGuid();
-		String stBase = Config.DefaultConfig().getWorkplace()+sep+req.getGuid();
+		String stWorkplace = DbConfig.defaultConfig().getWorkplace();
+		
+		String stBase = stWorkplace+sep+req.getGuid();
 		String stLib = stBase + sep + req.getLibName();
 		String stSrc = stLib + sep + "src";
 		String stPla = stLib + sep + req.getLauncher().getArch().toString();
+		if(!Directory.exists(stWorkplace))
+			Directory.make(stWorkplace);
 		Directory.make(stBase);
 		Directory.make(stLib);
 		Directory.make(stSrc);

@@ -11,18 +11,16 @@ import java.util.List;
 import udf.cas.Code;
 import udf.cas.Launcher;
 import udf.cas.Request;
-import udf.common.Arch;
-import udf.common.CodeType;
-import udf.common.Dim;
-import udf.common.Parallel;
-import udf.common.ParallelType;
-import udf.common.Precision;
+import udf.common.*;
 import udf.compile.PreProcessor;
 import udf.fluent.Version;
-
+import udf.compile.*;
 public class test {
 	public static void test1()
 	{
+		DbConfig conf =new DbConfig();
+		conf.setWorkplace("e:\\udf_online_test1");
+		conf.writeDefault();
 		String cmd = "cmd /k ipconfig /all" ;  
 	    
 		  try {  
@@ -59,6 +57,9 @@ public class test {
 	}
 	public static void test2() throws IOException
 	{
+		DbConfig conf =new DbConfig();
+		conf.setWorkplace("e:\\udf_online_test1");
+		conf.writeDefault();
 		String c1 ="#include \"udf.h\"\n"
 				+ "DEFINE_CG_MOTION(cg_m1,dt,vel,omega,time,dtime)\n" + 
 				"{	\n" + 
