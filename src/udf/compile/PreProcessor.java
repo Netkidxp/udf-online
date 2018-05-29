@@ -28,6 +28,7 @@ public class PreProcessor {
 	}
 	public void makeDirStruct() throws IOException
 	{
+		
 		Request req =request;
 		String sep = File.separator;
 		String stWorkplace = DbConfig.defaultConfig().getWorkplace();
